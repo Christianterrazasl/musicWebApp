@@ -26,14 +26,4 @@ const Artista = sequelize.define('artista', {
     tableName: 'artista'
 });
 
-Genero.hasMany(Artista, {
-    foreignKey: 'idGenero',
-    sourceKey: 'id',
-    onDelete: 'CASCADE',
-});
-Artista.belongsTo(Genero, {
-    foreignKey: 'idGenero',
-    targetKey: 'id'
-});
-
 module.exports = Artista;

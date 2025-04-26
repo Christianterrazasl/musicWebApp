@@ -1,3 +1,6 @@
+const multer = require('multer');
+const path = require('path');
+
 // Almacenamiento para audios
 const audioStorage = multer.diskStorage({
     destination: function (req, file, cb) {

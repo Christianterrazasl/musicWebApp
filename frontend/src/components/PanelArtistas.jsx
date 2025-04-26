@@ -2,13 +2,13 @@ import React, { useEffect, useState } from 'react'
 import { Row } from 'react-bootstrap'
 import Carta from './Carta'
 
-function PanelGeneros() {
-  const [generos, setGeneros] = useState([])
+function PanelArtistas({idGenero}) {
+  const [artistas, setArtistas] = useState([])
   useEffect(() => {
-    fetch('http://localhost:3000/api/genero')
+    fetch(`http://localhost:3000/api/artista/genero/${idGenero}`)
       .then(response => response.json())
       .then(data => {
-        setGeneros(data);
+        setArtistas(data);
       })
       .catch(error => {
         console.error('Error fetching data:', error);
@@ -18,11 +18,11 @@ function PanelGeneros() {
 
   return (
     <Row className='text-light m-5 d-flex justify-content-center align-items-center flex-wrap gap-4'>
-        {generos.map((genero) => (
-          <Carta key={genero.id} id={genero.id} title={genero.nombre} tipo='genero' imgUrl={genero.imagenUrl? genero.imagenUrl : undefined}/>
+        {artistas.map((artista) => (
+          <Carta key={artista.id} tipo='artista' id={artista.id} title={artista.nombre} imgUrl={artista.imagenUrl? artista.imagenUrl : undefined}/>
         ))}
     </Row>
   )
 }
 
-export default PanelGeneros
+export default PanelArtistas

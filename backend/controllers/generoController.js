@@ -1,4 +1,4 @@
-const {Genero, Cancion, Artista,Album} = require('../models');
+const {Genero} = require('../models');
 
 exports.getAllGeneros = async (req, res) => {
     try {

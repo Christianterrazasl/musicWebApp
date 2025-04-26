@@ -4,13 +4,31 @@ const Artista = require('./artistaModel.js');
 const Album = require('./albumModel.js');
 const Cancion = require('./cancionModel.js');
 
-const db = {
-    sequelize,    
-    Genero,
-    Artista,
-    Album,
-    Cancion,
-}
+// Configurar asociaciones
+Genero.hasMany(Artista, {
+    foreignKey: 'idGenero',
+    onDelete: 'CASCADE',
+});
+Artista.belongsTo(Genero, {
+    foreignKey: 'idGenero',
+});
+
+Artista.hasMany(Album, {
+    foreignKey: 'idArtista',
+    onDelete: 'CASCADE',
+});
+Album.belongsTo(Artista, {
+    foreignKey: 'idArtista',
+});
+
+Album.hasMany(Cancion, {
+    foreignKey: 'idAlbum',
+    onDelete: 'CASCADE',
+});
+Cancion.belongsTo(Album, {
+    foreignKey: 'idAlbum',
+});
+
 
 const syncDB = async ()=>{
     try{
@@ -23,4 +41,10 @@ const syncDB = async ()=>{
 
 syncDB();
 
-module.exports = db;
+module.exports = {
+    sequelize,
+    Genero,
+    Artista,
+    Album,
+    Cancion,
+};
