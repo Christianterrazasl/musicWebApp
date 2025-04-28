@@ -1,4 +1,4 @@
-const {Artista, Genero} = require('../models');
+const {Artista, Album, Cancion} = require('../models');
 
 exports.getAllArtistas = async (req, res) => {
     try {
@@ -67,3 +67,5 @@ exports.deleteArtista = async (req, res) => {
         res.status(500).json({ message: "Error al eliminar el género" });
     }
 }
+
+

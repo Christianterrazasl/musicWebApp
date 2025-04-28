@@ -15,14 +15,22 @@ function PanelArtistas({idGenero}) {
       });
   }, [])
 
-
-  return (
+  if (artistas.length>0){return(
     <Row className='text-light m-5 d-flex justify-content-center align-items-center flex-wrap gap-4'>
         {artistas.map((artista) => (
           <Carta key={artista.id} tipo='artista' id={artista.id} title={artista.nombre} imgUrl={artista.imagenUrl? artista.imagenUrl : undefined}/>
         ))}
     </Row>
-  )
+  )}
+  else{
+    return (
+      <Row className='text-light m-5 d-flex justify-content-center align-items-center flex-wrap text-center' style={{height: '75vh'}}>
+          <h1>No hay artistas disponibles</h1>
+      </Row>
+    
+    )
+  }
+  
 }
 
 export default PanelArtistas

@@ -31,8 +31,10 @@ router.delete("/album/:id", albumController.deleteAlbum);
 router.get("/cancion", cancionController.getAllCancions);
 router.get("/cancion/:id", cancionController.getCancionById);
 router.get("/cancion/album/:idAlbum", cancionController.getCancionByIdAlbum);
+router.get("/cancion/artista/:idArtista", cancionController.getCancionByIdArtista);
 router.post("/cancion/:idAlbum", uploadAudio.single("archivoUrl"), cancionController.postCancion);
 router.delete("/cancion/:id", cancionController.deleteCancion);
+
 
 
 

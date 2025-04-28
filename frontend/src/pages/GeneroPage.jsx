@@ -1,5 +1,5 @@
 import React from 'react'
-import Layout from '../components/Layout'
+import Layout from '../layouts/Layout';
 import { useParams } from 'react-router-dom'
 import PanelArtistas from '../components/PanelArtistas';
 

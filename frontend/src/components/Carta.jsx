@@ -11,7 +11,7 @@ function Carta({title="Titulo", imgUrl=imgDefault, id, tipo}) {
   }
   
   return (
-    <Card className='bg-dark rounded col-3 text-light card-hover' >
+    <Card className='bg-dark rounded col-3 text-light card-hover col-xl-2' >
             <img className="card-img-top" src={imgUrl} alt="imagen de la carta" />
             <CardBody>
                 <CardTitle><h5>{title}</h5></CardTitle>

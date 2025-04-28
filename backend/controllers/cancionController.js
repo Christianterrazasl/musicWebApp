@@ -1,4 +1,4 @@
-const {Cancion} = require('../models');
+const {Cancion, Artista, Album} = require('../models');
 
 exports.getAllCancions = async (req, res) => {
     try {
@@ -66,4 +66,20 @@ exports.deleteCancion = async (req, res) => {
         console.error("Error al eliminar el género: ", error);
         res.status(500).json({ message: "Error al eliminar el género" });
     }
+}
+
+exports.getCancionByIdArtista = async (req,res)=>{
+    const {idArtista} = req.params;
+    try{
+        const artista = await Artista.findByPk(idArtista, {include: {model: Album, include: {model: Cancion}}});
+    if (!artista) {
+        return res.status(404).json({ message: "Artista no encontrado" });
+    }
+    return res.status(200).json(artista);
+
+    }catch(err){
+        res.status(500).json({ message: "Error al obtener el artista" });
+    }
+    
+
 }

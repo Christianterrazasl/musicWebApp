@@ -1,6 +1,5 @@
 import React from 'react'
-import Logo from '../components/Logo'
-import Layout from '../components/Layout'
+import Layout from '../layouts/Layout'
 import PanelGeneros from '../components/PanelGeneros'
 
 const HomePage = ()=> {
