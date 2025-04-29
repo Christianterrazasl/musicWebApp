@@ -8,8 +8,8 @@ import ArtistaPage from "./pages/ArtistaPage";
 
 import './main.css';
 
-
-// import AdminPage from "./pages/AdminPage";
+import AdminPage from "./pages/AdminPage";
+import AdminGeneroFormPage from './pages/AdminGeneroFormPage';
 // import AdminGeneroPage from "./pages/AdminGeneroPage";
 // import AdminArtistaPage from "./pages/AdminArtistaPage";
 
@@ -27,6 +27,14 @@ const router = createBrowserRouter([
     element: <ArtistaPage/>,
     path: "/artista/:id",
   },
+  {
+    element: <AdminPage/>,
+    path: "/admin",
+  },
+  {
+    element: <AdminGeneroFormPage/>,
+    path: "/admin/form",
+  }
   
 ]);
 

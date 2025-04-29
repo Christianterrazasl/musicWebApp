@@ -13,7 +13,7 @@ function AlbumComponent({album}) {
     <Row className="bg-light" style={{height: '1px'}}>
 
     </Row>
-    <ul class="list-group list-group-flush">
+    <ul class="p-5">
         {album.cancions.map((cancion) => (
             <li class="list-group-item text-light p-5 d-flex justify-content-between"  style={{backgroundColor: 'transparent'}} key={cancion.id}>
                 
