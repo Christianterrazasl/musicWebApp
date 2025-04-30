@@ -43,7 +43,7 @@ exports.getArtistaById = async (req, res) => {
 exports.postArtista = async (req, res) => {
     const {idGenero} = req.params;
     const { nombre } = req.body;
-    const imagenUrl = req.file ? "/uploads/images"+ req.file.filename : null;
+    const imagenUrl = req.file ? "uploads/images/"+ req.file.filename : null;
     try {
         const nuevoArtista = await Artista.create({ nombre, imagenUrl, idGenero });
         res.status(201).json(nuevoArtista);

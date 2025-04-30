@@ -19,7 +19,7 @@ function PanelGeneros() {
     return (
       <Row className='text-light m-5 d-flex justify-content-center align-items-center flex-wrap gap-4'>
           {generos.map((genero) => (
-            <Carta key={genero.id} id={genero.id} title={genero.nombre} tipo='genero' imgUrl={genero.imagenUrl? genero.imagenUrl : undefined}/>
+            <Carta key={genero.id} id={genero.id} title={genero.nombre} tipo='genero' imgUrl={genero.imagenUrl? `http://localhost:3000/${genero.imagenUrl}` : undefined}/>
           ))}
       </Row>
     )

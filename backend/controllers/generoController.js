@@ -26,7 +26,7 @@ exports.getGeneroById = async (req, res) => {
 
 exports.postGenero = async (req, res) => {
     const { nombre } = req.body;
-    const imagenUrl = req.file ? "/uploads/images"+ req.file.filename : null
+    const imagenUrl = req.file ? "uploads/images/"+ req.file.filename : null
     try {
         const nuevoGenero = await Genero.create({ nombre, imagenUrl });
         res.status(201).json(nuevoGenero);

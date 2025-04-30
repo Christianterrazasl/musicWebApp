@@ -8,7 +8,7 @@ function AlbumComponent({album}) {
   return (<>
     <Row className='text-light p-4 offset-1 d-flex justify-content-between align-items-center'>
         <h2 className='col-3'>{album.nombre}</h2>
-        <img className="img-fluid col-1" src={album.imagenUrl? album.imagenUrl : defaultImg} alt="imagen del album" />
+        <img className="img-fluid col-1" src={album.imagenUrl? `http://localhost:3000/${album.imagenUrl}` : defaultImg} alt="imagen del album" />
     </Row>
     <Row className="bg-light" style={{height: '1px'}}>
 
@@ -19,7 +19,7 @@ function AlbumComponent({album}) {
                 
                 <h4 className='offset-2'>{cancion.nombre}</h4>
                 <audio controls className='col-3 me-5'>
-                    <source src={cancion.audioUrl? cancion.audioUrl : defaultAudio} type="audio/mpeg" />
+                    <source src={cancion.audioUrl? `http://localhost:3000/${cancion.audioUrl}` : defaultAudio} type="audio/mpeg" />
                     Your browser does not support the audio element.
                 </audio>
 

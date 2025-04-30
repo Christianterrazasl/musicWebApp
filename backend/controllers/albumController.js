@@ -43,7 +43,7 @@ exports.getAlbumById = async (req, res) => {
 exports.postAlbum = async (req, res) => {
     const {idArtista} = req.params;
     const { nombre } = req.body;
-    const imagenUrl = req.file ? "/uploads/images"+ req.file.filename : null;
+    const imagenUrl = req.file ? "uploads/images/"+ req.file.filename : null;
     try {
         const nuevoAlbum = await Album.create({ nombre, imagenUrl, idArtista });
         res.status(201).json(nuevoAlbum);

@@ -18,7 +18,7 @@ function PanelArtistas({idGenero}) {
   if (artistas.length>0){return(
     <Row className='text-light m-5 d-flex justify-content-center align-items-center flex-wrap gap-4'>
         {artistas.map((artista) => (
-          <Carta key={artista.id} tipo='artista' id={artista.id} title={artista.nombre} imgUrl={artista.imagenUrl? artista.imagenUrl : undefined}/>
+          <Carta key={artista.id} tipo='artista' id={artista.id} title={artista.nombre} imgUrl={artista.imagenUrl? `http://localhost:3000/${artista.imagenUrl}` : undefined}/>
         ))}
     </Row>
   )}

@@ -8,10 +8,14 @@ import ArtistaPage from "./pages/ArtistaPage";
 
 import './main.css';
 
-import AdminPage from "./pages/AdminPage";
-import AdminGeneroFormPage from './pages/AdminGeneroFormPage';
-// import AdminGeneroPage from "./pages/AdminGeneroPage";
-// import AdminArtistaPage from "./pages/AdminArtistaPage";
+import AdminPage from "./pages/admin/AdminPage";
+import AdminGeneroFormPage from './pages/admin/form/AdminGeneroFormPage';
+import AdminGeneroPage from "./pages/admin/AdminGeneroPage";
+import AdminArtistaFormPage from './pages/admin/form/AdminArtistaFormPage';
+import AdminArtistaPage from './pages/admin/AdminArtistaPage';
+import AdminAlbumFormPage from './pages/admin/form/AdminAlbumFormPage';
+import AdminAlbumPage from './pages/admin/AdminAlbumPage';
+
 
 
 const router = createBrowserRouter([
@@ -34,6 +38,26 @@ const router = createBrowserRouter([
   {
     element: <AdminGeneroFormPage/>,
     path: "/admin/form",
+  },
+  {
+    element: <AdminGeneroPage/>,
+    path: "/admin/artista/:idGenero",
+  },
+  {
+    element: <AdminArtistaFormPage/>,
+    path: "/admin/artista/form/:idGenero",
+  },
+  {
+    element: <AdminArtistaPage/>,
+    path:'/admin/album/:idArtista',
+  },
+  {
+    path: "/admin/album/form/:idArtista",
+    element: <AdminAlbumFormPage/>,
+  },
+  {
+    element: <AdminAlbumPage/>,
+    path: "/admin/cancion/:idAlbum",
   }
   
 ]);

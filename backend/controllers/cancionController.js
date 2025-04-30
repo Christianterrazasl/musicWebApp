@@ -43,7 +43,7 @@ exports.getCancionById = async (req, res) => {
 exports.postCancion = async (req, res) => {
     const {idAlbum} = req.params;
     const { nombre } = req.body;
-    const imagenUrl = req.file ? "/uploads/images"+ req.file.filename : null;
+    const imagenUrl = req.file ? "uploads/audios/"+ req.file.filename : null;
     try {
         const nuevoCancion = await Cancion.create({ nombre, imagenUrl, idAlbum });
         res.status(201).json(nuevoCancion);

@@ -3,25 +3,28 @@ import { Container } from 'react-bootstrap'
 import Logo from '../components/Logo'
 import {Link, useNavigate} from 'react-router-dom'
 
-function AdminLayout({children}) {
-  return (<Container fluid className="p-0 bg-light min-vh-100">
+function AdminLayout({children, backButton=false, backButtonLink="/admin"}) {
+    const navigate = useNavigate();
 
-            <nav className="navbar navbar-expand-lg navbar-light bg-dark p-4">
-            <div className='me-5'>
-                <Logo/>
-            </div>
-            <div className="navbar-nav gap-5">
-            <Link className="nav-item nav-link text-light" to={'#'}><h5>Generos</h5></Link>
-            <Link className="nav-item nav-link text-light" to={'#'}><h5>Artistas</h5></Link>
-            <Link className="nav-item nav-link text-light" to={'#'}><h5>Albums</h5></Link>
-            <Link className="nav-item nav-link text-light" to={'#'}><h5>Canciones</h5></Link>
-            </div>
-            </nav>
-            <div>
-                {children}
-            </div>
-        </Container>
-    
+
+  return (<Container fluid className='m-0 p-0 w-100 overflow-hidden min-vh-100'>
+    <div className="p-3 pt-5 bg-dark row d-flex  justify-content-between align-items-center">
+      <div className="col-auto">
+          <Logo/>
+      </div>
+      <div className="col-auto">
+          {
+              backButton ? 
+              <button className="btn btn-light" onClick={() => navigate(backButtonLink)}>Volver</button> :
+              <div className="col-2"></div>
+          }
+      </div>      
+    </div>
+    <div style={{minHeight: "80vh"}}>
+        {children}
+    </div>
+      
+  </Container>
         )
 }
 
