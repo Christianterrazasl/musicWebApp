@@ -14,17 +14,25 @@ function AlbumComponent({album}) {
 
     </Row>
     <ul class="p-5">
-        {album.cancions.map((cancion) => (
-            <li class="list-group-item text-light p-5 d-flex justify-content-between"  style={{backgroundColor: 'transparent'}} key={cancion.id}>
+        {
+            album.cancions.length>0? 
+            album.cancions.map((cancion) => (
+                <li class="list-group-item text-light p-5 d-flex justify-content-between"  style={{backgroundColor: 'transparent'}} key={cancion.id}>
+                    
+                    <h4 className='offset-2'>{cancion.nombre}</h4>
+                    <audio controls className='col-5 me-5'>
+                        <source src={cancion.archivoUrl? `http://localhost:3000/${cancion.archivoUrl}` : defaultAudio} type="audio/mpeg" />
+                        Your browser does not support the audio element.
+                    </audio>
+    
+                </li>
+            )):
+            
+                (<h4 className='offset-2 text-light'>No hay canciones disponibles</h4>)
                 
-                <h4 className='offset-2'>{cancion.nombre}</h4>
-                <audio controls className='col-3 me-5'>
-                    <source src={cancion.audioUrl? `http://localhost:3000/${cancion.audioUrl}` : defaultAudio} type="audio/mpeg" />
-                    Your browser does not support the audio element.
-                </audio>
-
-            </li>
-        ))}
+        }
+        
+        
 
     </ul>
     

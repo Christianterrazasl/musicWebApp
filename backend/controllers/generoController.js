@@ -50,3 +50,21 @@ exports.deleteGenero = async (req, res) => {
         res.status(500).json({ message: "Error al eliminar el género" });
     }
 }
+
+
+exports.updateGenero = async (req, res) => {
+    const { id } = req.params;
+    const { nombre } = req.body;
+    const imagenUrl = req.file ? "uploads/images/"+ req.file.filename : null
+    try {
+        const genero = await Genero.findByPk(id);
+        if (!genero) {
+            return res.status(404).json({ message: "Género no encontrado" });
+        }
+        await Genero.update({ nombre, imagenUrl }, { where: { id } });
+        res.status(200).json({ message: "Género actualizado" });
+    } catch (error) {
+        console.error("Error al actualizar el género: ", error);
+        res.status(500).json({ message: "Error al actualizar el género" });
+    }
+}

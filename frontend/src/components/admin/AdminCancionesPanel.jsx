@@ -54,9 +54,9 @@ function AdminCancionesPanel({idAlbum}) {
                     {elementos.map((elemento) => (
                         <div className='list-group-item d-flex justify-content-between align-items-center flex-row p-3 bg-light' key={elemento.id}>
                             <div className='col-3 d-flex gap-5 d-flex align-items-center'>
-                                <li className='bg-light p-3 fs-4 col-3'>{elemento.nombre}</li>
-                                <audio controls className='col-3 me-5'>
-                                    <source src={elemento.audioUrl? `http://localhost:3000/${elemento.audioUrl}` : defaultAudio} type="audio/mpeg" />
+                                <li className='bg-light p-3 fs-4 col-6'>{elemento.nombre}</li>
+                                <audio controls className='col-12 ms-5'>
+                                    <source src={elemento.archivoUrl? `http://localhost:3000/${elemento.archivoUrl}` : defaultAudio} type="audio/mpeg" />
                                     Your browser does not support the audio element.
                                 </audio>
                             </div>

@@ -1,32 +1,69 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import AdminLayout from '../../../layouts/AdminLayout'
 import { Form, Button } from 'react-bootstrap'
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 
 function AdminGeneroFormPage() {
   const [nombre, setNombre] = useState('');
   const [imagen, setImagen] = useState(null);
   const navigate = useNavigate();
+  const {idGenero} = useParams();
+
+  useEffect(() => {
+    if (idGenero) {
+      fetch(`http://localhost:3000/api/genero/${idGenero}`)
+        .then((response) => response.json())
+        .then((data) => {
+          setNombre(data.nombre);
+          
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }
+
+  }, [idGenero]);
 
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const formData = new FormData();
-    formData.append('nombre', nombre);
-    formData.append('imagenUrl', imagen);
+    
 
-    fetch('http://localhost:3000/api/genero', {
-      method: 'POST',
-      body: formData,
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        navigate('/admin');
+    if (idGenero){
+      const formData = new FormData();
+      formData.append('nombre', nombre);
+      formData.append('imagenUrl', imagen);
+      fetch(`http://localhost:3000/api/genero/${idGenero}`, {
+        method: 'PUT',
+        body: formData,
       })
-      .catch((error) => {
-        console.error(error);
-      });
+        .then((response) => response.json())
+        .then((data) => {
+          navigate('/admin');
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+
+    }
+    else{
+      const formData = new FormData();
+      formData.append('nombre', nombre);
+      formData.append('imagenUrl', imagen);
+      fetch('http://localhost:3000/api/genero', {
+        method: 'POST',
+        body: formData,
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          navigate('/admin');
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }
+    
   };
 
   return (

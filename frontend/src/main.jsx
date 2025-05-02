@@ -15,6 +15,7 @@ import AdminArtistaFormPage from './pages/admin/form/AdminArtistaFormPage';
 import AdminArtistaPage from './pages/admin/AdminArtistaPage';
 import AdminAlbumFormPage from './pages/admin/form/AdminAlbumFormPage';
 import AdminAlbumPage from './pages/admin/AdminAlbumPage';
+import AdminCancionFormPage from './pages/admin/form/AdminCancionFormPage';
 
 
 
@@ -37,7 +38,11 @@ const router = createBrowserRouter([
   },
   {
     element: <AdminGeneroFormPage/>,
-    path: "/admin/form",
+    path: "/admin/form/:idGenero",
+  },
+  {
+    element: <AdminGeneroFormPage/>,
+    path: "/admin/form/",
   },
   {
     element: <AdminGeneroPage/>,
@@ -48,6 +53,10 @@ const router = createBrowserRouter([
     path: "/admin/artista/form/:idGenero",
   },
   {
+    element: <AdminArtistaFormPage/>,
+    path: "/admin/artista/form/:idGenero/:idArtista",
+  },
+  {
     element: <AdminArtistaPage/>,
     path:'/admin/album/:idArtista',
   },
@@ -56,9 +65,22 @@ const router = createBrowserRouter([
     element: <AdminAlbumFormPage/>,
   },
   {
+    path: "/admin/album/form/:idArtista/:idAlbum",
+    element: <AdminAlbumFormPage/>,
+  },
+  {
     element: <AdminAlbumPage/>,
     path: "/admin/cancion/:idAlbum",
+  },
+  {
+    element: <AdminCancionFormPage/>,
+    path: "/admin/cancion/form/:idAlbum",
+  },
+  {
+    element: <AdminCancionFormPage/>,
+    path: "/admin/cancion/form/:idAlbum/:idCancion",
   }
+
   
 ]);
 

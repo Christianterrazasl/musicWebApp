@@ -58,7 +58,7 @@ function AdminPanelGeneros() {
 
                             <div className='col-3 d-flex gap-3'>
                                 <button className='btn btn-light border-dark p-3 fs-5' onClick={()=>navigate(`/admin/artista/${elemento.id}`)}>Ver categoria</button>
-                                <button className='btn btn-primary border-dark p-3 fs-5'>Modificar</button>
+                                <button className='btn btn-primary border-dark p-3 fs-5' onClick={()=>navigate(`/admin/form/${elemento.id}`)}>Modificar</button>
                                 <button className='btn btn-danger border-dark p-3 fs-5' onClick={()=>handleEliminar(elemento.id)}>Eliminar</button>
                             </div>
                             

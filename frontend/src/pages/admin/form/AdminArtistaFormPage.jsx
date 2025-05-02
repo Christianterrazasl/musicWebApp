@@ -1,7 +1,7 @@
 import React from 'react'
 import AdminLayout from '../../../layouts/AdminLayout'
 import { Form, Button } from 'react-bootstrap'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 
 function AdminArtistaFormPage() {
@@ -9,26 +9,61 @@ function AdminArtistaFormPage() {
   const [nombre, setNombre] = useState('');
   const [imagen, setImagen] = useState(null);
   const navigate = useNavigate();
-  const {idGenero} = useParams();
+  const {idGenero, idArtista} = useParams();
 
+
+  useEffect(()=>{
+    if (idArtista) {
+      fetch(`http://localhost:3000/api/artista/${idArtista}`)
+        .then((response) => response.json())
+        .then((data) => {
+          setNombre(data.nombre);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }
+
+  },[idArtista])
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    const formData = new FormData();
-    formData.append('nombre', nombre);
-    formData.append('imagenUrl', imagen);
 
-    fetch(`http://localhost:3000/api/artista/${idGenero}`, {
-      method: 'POST',
-      body: formData,
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        navigate('/admin/artista/'+idGenero);
+    e.preventDefault();
+    if (idArtista){
+      const formData = new FormData();
+      formData.append('nombre', nombre);
+      formData.append('imagenUrl', imagen);
+      fetch(`http://localhost:3000/api/artista/${idArtista}`, {
+        method: 'PUT',
+        body: formData,
       })
-      .catch((error) => {
-        console.error(error);
-      });
+        .then((response) => response.json())
+        .then((data) => {
+          navigate('/admin/artista/'+idGenero);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+      }
+    else{
+      const formData = new FormData();
+      formData.append('nombre', nombre);
+      formData.append('imagenUrl', imagen);
+      fetch(`http://localhost:3000/api/artista/${idGenero}`, {
+        method: 'POST',
+        body: formData,
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          navigate('/admin/artista/'+idGenero);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }
+    
+
+    
   };
 
   return (

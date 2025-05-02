@@ -43,9 +43,9 @@ exports.getCancionById = async (req, res) => {
 exports.postCancion = async (req, res) => {
     const {idAlbum} = req.params;
     const { nombre } = req.body;
-    const imagenUrl = req.file ? "uploads/audios/"+ req.file.filename : null;
+    const archivoUrl = req.file ? "uploads/audios/"+ req.file.filename : null;
     try {
-        const nuevoCancion = await Cancion.create({ nombre, imagenUrl, idAlbum });
+        const nuevoCancion = await Cancion.create({ nombre, archivoUrl, idAlbum });
         res.status(201).json(nuevoCancion);
     } catch (error) {
         console.error("Error al crear el género: ", error);

@@ -68,4 +68,19 @@ exports.deleteArtista = async (req, res) => {
     }
 }
 
-
+exports.updateArtista = async (req, res) => {
+    const { id } = req.params;
+    const { nombre } = req.body;
+    const imagenUrl = req.file ? "uploads/images/"+ req.file.filename : null;
+    try {
+        const artista = await Artista.findByPk(id);
+        if (!artista) {
+            return res.status(404).json({ message: "Género no encontrado" });
+        }
+        await Artista.update({ nombre, imagenUrl }, { where: { id } });
+        res.status(200).json({ message: "Género actualizado" });
+    } catch (error) {
+        console.error("Error al actualizar el género: ", error);
+        res.status(500).json({ message: "Error al actualizar el género" });
+    }
+}

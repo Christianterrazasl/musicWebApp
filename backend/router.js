@@ -12,6 +12,7 @@ router.get("/genero", generoController.getAllGeneros);
 router.get("/genero/:id", generoController.getGeneroById);
 router.post("/genero", uploadImage.single("imagenUrl"), generoController.postGenero);
 router.delete("/genero/:id", generoController.deleteGenero);
+router.put("/genero/:id", uploadImage.single("imagenUrl"), generoController.updateGenero);
 
 //endpoints artista
 router.get("/artista", artistaController.getAllArtistas);
@@ -19,6 +20,7 @@ router.get("/artista/:id", artistaController.getArtistaById);
 router.get("/artista/genero/:idGenero", artistaController.getArtistaByIdGenero);
 router.post("/artista/:idGenero", uploadImage.single("imagenUrl"), artistaController.postArtista);
 router.delete("/artista/:id", artistaController.deleteArtista);
+router.put("/artista/:id", uploadImage.single("imagenUrl"), artistaController.updateArtista);
 
 //endpoints album
 router.get("/album", albumController.getAllAlbums);
@@ -26,6 +28,7 @@ router.get("/album/:id", albumController.getAlbumById);
 router.get("/album/artista/:idArtista", albumController.getAlbumByIdArtista);
 router.post("/album/:idArtista", uploadImage.single("imagenUrl"), albumController.postAlbum);
 router.delete("/album/:id", albumController.deleteAlbum);
+router.put("/album/:id", uploadImage.single("imagenUrl"), albumController.updateAlbum);
 
 //endpoints cancion
 router.get("/cancion", cancionController.getAllCancions);
